@@ -6,6 +6,7 @@ import java.util.stream.*;
 import java.io.*;
 import java.util.*;
 import java.util.function.Function;
+
 record Game(long id, LocalDateTime date, boolean isFinished, String sequence) {
 
 	@Override
@@ -57,6 +58,8 @@ public class FilesGenerationAppl {
 	private static Random random = new Random();
 	private static long gameGamerId = 1;
 	private static long moveId = 1;
+	
+	
 	public static void main(String[] args) {
 		createGames();
 		createGamers();
