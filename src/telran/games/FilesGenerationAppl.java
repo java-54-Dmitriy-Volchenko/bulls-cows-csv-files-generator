@@ -118,7 +118,7 @@ public class FilesGenerationAppl {
 	}
 	private static void createGamesGamers() {
 		Map<Long, String[]> gameGamers = 
-				getGameGamersMap();
+				getGameGamerNamesMap();
 		gameIdWinnerName = getGameWinnerName(gameGamers);
 		gameGamersMap = getGameGamersMap(gameGamers);
 		putInFile(GAMES_GAMERS_FILE, gameGamersMap.values());
@@ -136,7 +136,7 @@ public class FilesGenerationAppl {
 		return gameGamers.entrySet().stream()
 				.collect(Collectors.toMap(e -> e.getKey(), e -> getRandomWinner(e.getKey(),e.getValue())));
 	}
-	private static Map<Long, String[]> getGameGamersMap() {
+	private static Map<Long, String[]> getGameGamerNamesMap() {
 		//gets map: key - gameId, value - gamer's names
 		return gamesMap.keySet().stream().collect(Collectors.toMap(Function.identity(),
 				id -> getRandomGameGamers()));
@@ -146,8 +146,8 @@ public class FilesGenerationAppl {
 		return gamesMap.get(gameId).isFinished() ? gamersInGame[random.nextInt(0, gamersInGame.length)] : "";
 	}
 	private static String[] getRandomGameGamers() {
-		int nGamers = random.nextInt(1, MAX_GAME_GAMERS + 1);
-		return random.ints(1, nGamers + 1).distinct().limit(nGamers).mapToObj(i -> "gamer" + i)
+		int nGamersGame = random.nextInt(1, MAX_GAME_GAMERS + 1);
+		return random.ints(1, N_GAMERS + 1).distinct().limit(nGamersGame).mapToObj(i -> "gamer" + i)
 				.toArray(String[]::new);
 	}
 	
